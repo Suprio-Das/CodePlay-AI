@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodePlay - Kids Coding Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        comic: ['Comic Neue', 'cursive'],
+                        nunito: ['Nunito', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFD166',
+                        dark: '#2A2D34',
+                        light: '#F7F9FC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .badge-hover:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background-color: #f0f9ff;
+        }
+    </style>
+</head>
+
+<body class="font-nunito bg-light dark:bg-dark text-gray-800 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-code text-primary text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic text-primary">CodePlay</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#"
+                            class="border-b-2 border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="courses.html"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Courses
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            About
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-sun text-accent dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <div class="ml-4 flex items-center md:hidden">
+                        <button id="mobile-menu-button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="bg-primary text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Home
+                </a>
+                <a href="courses.html"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Courses
+                </a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    About
+                </a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold font-comic mb-4">Let's Code Together!</h1>
+                    <p class="text-xl mb-8">Empowering young minds through fun and interactive coding adventures. Start
+                        your child's journey to becoming a future tech leader today!</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button
+                            class="bg-white text-primary font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg">
+                            Get Started
+                        </button>
+                        <button
+                            class="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white hover:text-primary transition duration-300">
+                            Watch Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://picsum.photos/seed/kidscoding/500/400.jpg" alt="Kids coding"
+                        class="rounded-lg shadow-2xl max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="bg-accent text-dark py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Summer Coding Camp Starts In:</h2>
+            <div class="flex justify-center space-x-4 text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div id="days" class="text-3xl font-bold">00</div>
+                    <div class="text-sm">Days</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div id="hours" class="text-3xl font-bold">00</div>
+                    <div class="text-sm">Hours</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div id="minutes" class="text-3xl font-bold">00</div>
+                    <div class="text-sm">Minutes</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <div id="seconds" class="text-3xl font-bold">00</div>
+                    <div class="text-sm">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Our Awesome Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <div class="inline-block p-3 rounded-full bg-blue-100 dark:bg-blue-900 mb-4">
+                            <i class="fas fa-laptop-code text-3xl text-blue-500 dark:text-blue-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Interactive Lessons</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">Engaging, hands-on coding lessons that make
+                        learning fun and effective.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <div class="inline-block p-3 rounded-full bg-green-100 dark:bg-green-900 mb-4">
+                            <i class="fas fa-gamepad text-3xl text-green-500 dark:text-green-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Games & Challenges</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">Learn through play with fun coding games and
+                        challenges.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <div class="inline-block p-3 rounded-full bg-purple-100 dark:bg-purple-900 mb-4">
+                            <i class="fas fa-project-diagram text-3xl text-purple-500 dark:text-purple-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Build Your Own Projects</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">Create your own games, animations, and apps
+                        with our guided projects.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-center mb-4">
+                        <div class="inline-block p-3 rounded-full bg-yellow-100 dark:bg-yellow-900 mb-4">
+                            <i class="fas fa-medal text-3xl text-yellow-500 dark:text-yellow-300"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Earn Badges</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-center">Collect achievement badges as you complete
+                        coding milestones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">How It Works</h2>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center mb-8 md:mb-0">
+                    <div
+                        class="w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-3xl text-blue-500 dark:text-blue-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Learn</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 max-w-xs">Start with our fun, interactive
+                        lessons designed for kids.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:block">
+                    <i class="fas fa-arrow-right text-3xl text-gray-400"></i>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center mb-8 md:mb-0">
+                    <div
+                        class="w-20 h-20 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-3xl text-green-500 dark:text-green-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Code</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 max-w-xs">Practice your skills with fun
+                        coding challenges.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:block">
+                    <i class="fas fa-arrow-right text-3xl text-gray-400"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-20 h-20 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-share-alt text-3xl text-purple-500 dark:text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Share</h3>
+                    <p class="text-center text-gray-600 dark:text-gray-300 max-w-xs">Share your creations with friends
+                        and family!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">What Parents & Kids Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/parent1/60/60.jpg" alt="Parent"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Parent of 8-year-old</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"CodePlay has transformed my son's interest in
+                        technology. He now spends his screen time productively and is already building simple games!"
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/kid1/60/60.jpg" alt="Kid"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Alex, Age 10</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"I love CodePlay! The games are so fun and I've
+                        made my own animation. My teacher was impressed with what I learned!"</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/seed/parent2/60/60.jpg" alt="Parent"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Parent of 12-year-old</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"The curriculum is well-structured and the
+                        projects are engaging. My daughter has developed real coding skills while having a blast!"</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Modal Trigger -->
+    <section class="py-16 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Test Your Coding Knowledge!</h2>
+            <p class="text-xl mb-8">Take our fun coding quiz and see how much you know!</p>
+            <button id="quiz-button"
+                class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 shadow-lg">
+                Start Quiz
+            </button>
+        </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-primary">Coding Quiz</h3>
+                <button id="close-quiz"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Question 1 -->
+                <div id="question-1" class="quiz-question">
+                    <p class="text-lg font-bold mb-4">What does HTML stand for?</p>
+                    <div class="space-y-3">
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" class="mr-3">
+                                <span>Hyper Text Markup Language</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" class="mr-3">
+                                <span>High Tech Modern Language</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" class="mr-3">
+                                <span>Hyper Transfer Markup Language</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div id="question-2" class="quiz-question hidden">
+                    <p class="text-lg font-bold mb-4">Which of these is NOT a programming language?</p>
+                    <div class="space-y-3">
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" class="mr-3">
+                                <span>Python</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" class="mr-3">
+                                <span>HTML</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" class="mr-3">
+                                <span>JavaScript</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div id="question-3" class="quiz-question hidden">
+                    <p class="text-lg font-bold mb-4">What does CSS stand for?</p>
+                    <div class="space-y-3">
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" class="mr-3">
+                                <span>Creative Style Sheets</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" class="mr-3">
+                                <span>Cascading Style Sheets</span>
+                            </label>
+                        </div>
+                        <div
+                            class="quiz-option p-3 border rounded-lg cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" class="mr-3">
+                                <span>Computer Style System</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div id="quiz-results" class="hidden text-center">
+                    <div class="text-5xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-bold mb-2">Quiz Completed!</h3>
+                    <p class="text-lg mb-4">Your score: <span id="quiz-score">0</span>/3</p>
+                    <p class="mb-6">Great job! You're on your way to becoming a coding expert!</p>
+                    <button id="restart-quiz"
+                        class="bg-primary text-white font-bold py-2 px-6 rounded-full hover:bg-red-600 transition duration-300">
+                        Try Again
+                    </button>
+                </div>
+
+                <div class="mt-6 text-right">
+                    <button id="next-question"
+                        class="bg-primary text-white font-bold py-2 px-6 rounded-full hover:bg-red-600 transition duration-300">
+                        Next Question
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                            required>
+                        <p id="name-error" class="text-red-500 text-sm mt-1 hidden">Please enter your name</p>
+                    </div>
+
+                    <div>
+                        <label for="email"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                            required>
+                        <p id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address
+                        </p>
+                    </div>
+
+                    <div>
+                        <label for="message"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+                            required></textarea>
+                        <p id="message-error" class="text-red-500 text-sm mt-1 hidden">Please enter your message</p>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit"
+                            class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-red-600 transition duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
+                        <span class="font-bold text-lg">What age range is this platform for?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 bg-gray-50 dark:bg-gray-700 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">CodePlay is designed for children aged 6-14. We have
+                            different courses tailored to various age groups and skill levels.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
+                        <span class="font-bold text-lg">Do you need any prior coding experience?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 bg-gray-50 dark:bg-gray-700 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">Not at all! Our platform is designed for beginners.
+                            We start with the basics and gradually build up to more complex concepts.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
+                        <span class="font-bold text-lg">How much does it cost?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 bg-gray-50 dark:bg-gray-700 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">We offer various subscription plans starting at
+                            $9.99/month. We also have annual plans and family packages available at discounted rates.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+                    <button
+                        class="faq-toggle w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center">
+                        <span class="font-bold text-lg">Is parental supervision required?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 py-4 bg-gray-50 dark:bg-gray-700 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">While our platform is designed to be kid-friendly
+                            and intuitive, we recommend parental supervision for younger children, especially during the
+                            first few sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic">CodePlay</span>
+                    </div>
+                    <p class="mb-4">Empowering kids to become creators in the digital world through fun and engaging
+                        coding education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200 transition">Home</a></li>
+                        <li><a href="courses.html" class="hover:text-gray-200 transition">Courses</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Parent Guide</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Coding Street, Tech City, TC 12345</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@codeplay.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
+                <p>&copy; 2025 CodePlay. All rights reserved by Suprio Das.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
