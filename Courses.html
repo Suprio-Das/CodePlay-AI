@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodePlay - Kids Coding Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        comic: ['Comic Neue', 'cursive'],
+                        nunito: ['Nunito', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFD166',
+                        dark: '#2A2D34',
+                        light: '#F7F9FC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .badge-hover:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="font-nunito bg-light dark:bg-dark text-gray-800 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-code text-primary text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic text-primary">CodePlay</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="index.html"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Courses
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            About
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-sun text-accent dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <div class="ml-4 flex items-center md:hidden">
+                        <button id="mobile-menu-button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="text-gray-500 dark:text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Home
+                </a>
+                <a href="#" class="bg-primary text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Courses
+                </a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    About
+                </a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold font-comic mb-4">Explore Our Courses</h1>
+                <p class="text-xl max-w-3xl mx-auto">Find the perfect coding adventure for your child. From beginner to
+                    advanced, we have something for every young coder!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Filters -->
+    <section class="py-8 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-red-600 transition">All
+                    Courses</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Ages
+                    6-8</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Ages
+                    9-12</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Ages
+                    13+</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Beginner</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Intermediate</button>
+                <button
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-6 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">Advanced</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Catalog -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Available Courses</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/blockcoding/400/200.jpg" alt="Block Coding"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 6-8
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Block Coding Basics</h3>
+                            <span
+                                class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-2.5 py-0.5 rounded">Beginner</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn the fundamentals of coding using colorful
+                            blocks. Create animations and simple games without typing a single line of code!</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">25%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 8 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/gamecoding/400/200.jpg" alt="Game Coding"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 9-12
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Game Development</h3>
+                            <span
+                                class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs font-semibold px-2.5 py-0.5 rounded">Intermediate</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn to create your own video games! From
+                            platformers to puzzles, you'll learn game design principles and coding skills.</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">50%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 12 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/webdev/400/200.jpg" alt="Web Development"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 9-12
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Web Development</h3>
+                            <span
+                                class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs font-semibold px-2.5 py-0.5 rounded">Intermediate</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Create your own websites and interactive web
+                            pages using HTML, CSS, and JavaScript in a fun, beginner-friendly way.</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">10%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 10%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 10 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/animation/400/200.jpg" alt="Animation"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 6-8
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Creative Animation</h3>
+                            <span
+                                class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-semibold px-2.5 py-0.5 rounded">Beginner</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn to create fun animations and cartoons.
+                            Bring your stories to life with simple coding techniques.</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 6 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/python/400/200.jpg" alt="Python"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 13+
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Python Programming</h3>
+                            <span
+                                class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs font-semibold px-2.5 py-0.5 rounded">Advanced</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Master one of the most popular programming
+                            languages. Build apps, analyze data, and create AI projects with Python.</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">5%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 5%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 16 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 fade-in">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/robotics/400/200.jpg" alt="Robotics"
+                            class="w-full h-48 object-cover">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white px-3 py-1 m-2 rounded-full text-sm font-bold">
+                            Ages 9-12
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold">Robotics & Coding</h3>
+                            <span
+                                class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs font-semibold px-2.5 py-0.5 rounded">Intermediate</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn to program robots and build simple
+                            machines. Combine coding skills with hands-on engineering challenges.</p>
+
+                        <div class="mb-4">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Progress</span>
+                                <span class="text-sm font-medium">40%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i> 14 weeks
+                            </span>
+                            <a href="course-details.html" class="text-primary hover:text-red-600 font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button
+                    class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-red-600 transition duration-300">
+                    Load More Courses
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Why Choose CodePlay?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-blue-100 dark:bg-blue-900 rounded-full mb-4">
+                        <i class="fas fa-chalkboard-teacher text-3xl text-blue-500 dark:text-blue-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Expert Instructors</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Our teachers are experienced educators with backgrounds
+                        in both technology and child development.</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-green-100 dark:bg-green-900 rounded-full mb-4">
+                        <i class="fas fa-project-diagram text-3xl text-green-500 dark:text-green-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Project-Based Learning</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Learn by doing! Build real projects that you can share
+                        with friends and family.</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-purple-100 dark:bg-purple-900 rounded-full mb-4">
+                        <i class="fas fa-users text-3xl text-purple-500 dark:text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Community Support</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Join our vibrant community of young coders. Share ideas
+                        and get help from peers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Coding?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Join thousands of kids who are already building their future with
+                CodePlay. Your child's coding adventure starts today!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button
+                    class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300">
+                    Start Free Trial
+                </button>
+                <button
+                    class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-primary transition duration-300">
+                    View Pricing
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-800 to-indigo-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic">CodePlay</span>
+                    </div>
+                    <p class="mb-4">Empowering kids to become creators in the digital world through fun and engaging
+                        coding education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-gray-200 transition">Home</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Courses</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Parent Guide</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Coding Street, Tech City, TC 12345</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@codeplay.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
+                <p>&copy; 2023 CodePlay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Course Filter Buttons
+        const filterButtons = document.querySelectorAll('.py-2.rounded-full');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-gray-200');
+                });
+
+                // Add active class to clicked button
+                this.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-gray-200');
+                this.classList.add('bg-primary', 'text-white');
+            });
+        });
+
+        // Light/Dark Mode Toggle
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            document.documentElement.classList.toggle('dark');
+
+            // Save preference to localStorage
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode'))) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Course Card Hover Effect
+        const courseCards = document.querySelectorAll('.rounded-xl');
+        courseCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.classList.add('shadow-xl');
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.classList.remove('shadow-xl');
+            });
+        });
+    </script>
+</body>
+
+</html>
