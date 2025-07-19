@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodePlay - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        comic: ['Comic Neue', 'cursive'],
+                        nunito: ['Nunito', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFD166',
+                        dark: '#2A2D34',
+                        light: '#F7F9FC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .badge-hover:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="font-nunito bg-light dark:bg-dark text-gray-800 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-code text-primary text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic text-primary">CodePlay</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="index.html"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="courses.html"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Courses
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            About
+                        </a>
+                        <a href="#"
+                            class="border-b-2 border-transparent hover:border-gray-300 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-sun text-accent dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+
+                    <!-- Mobile menu button -->
+                    <div class="ml-4 flex items-center md:hidden">
+                        <button id="mobile-menu-button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="text-gray-500 dark:text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Home
+                </a>
+                <a href="courses.html"
+                    class="text-gray-500 dark:text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Courses
+                </a>
+                <a href="#" class="bg-primary text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    About
+                </a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block pl-3 pr-4 py-2 text-base font-medium">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold font-comic mb-4">About CodePlay</h1>
+                <p class="text-xl max-w-3xl mx-auto">Empowering the next generation of creators through fun, interactive
+                    coding education.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://picsum.photos/seed/codingkids/600/400.jpg" alt="Kids coding"
+                        class="rounded-xl shadow-lg">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold mb-6 text-primary">Our Mission</h2>
+                    <p class="text-lg mb-6">At CodePlay, we believe that coding is more than just a technical skill—it's
+                        a creative outlet that empowers children to become problem-solvers, critical thinkers, and
+                        innovators.</p>
+                    <p class="text-lg mb-6">Our mission is to make coding education accessible, engaging, and fun for
+                        children of all backgrounds and abilities. We're dedicated to breaking down complex concepts
+                        into bite-sized, manageable lessons that spark curiosity and build confidence.</p>
+                    <div class="flex items-center">
+                        <div class="mr-6">
+                            <div class="text-4xl font-bold text-primary">10,000+</div>
+                            <div class="text-gray-600 dark:text-gray-400">Students</div>
+                        </div>
+                        <div class="mr-6">
+                            <div class="text-4xl font-bold text-primary">50+</div>
+                            <div class="text-gray-600 dark:text-gray-400">Courses</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-primary">15+</div>
+                            <div class="text-gray-600 dark:text-gray-400">Countries</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Meet Our Team</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-6">
+                        <div class="flex flex-col items-center mb-6">
+                            <img src="https://picsum.photos/seed/suprio/150/150.jpg" alt="Suprio Das"
+                                class="w-32 h-32 rounded-full object-cover mb-4">
+                            <h3 class="text-xl font-bold">Suprio Das</h3>
+                            <p class="text-primary">Founder & Developer</p>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">B.Sc in CSE at Port City International
+                            University</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Junior MERN Stack Developer</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Passionate about making coding accessible to
+                            children and building tools that spark creativity.</p>
+                        <div class="flex justify-center space-x-4">
+                            <a href="mailto:suprio.cse@gmail.com" class="text-primary hover:text-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-6">
+                        <div class="flex flex-col items-center mb-6">
+                            <img src="https://picsum.photos/seed/teacher1/150/150.jpg" alt="Sarah Johnson"
+                                class="w-32 h-32 rounded-full object-cover mb-4">
+                            <h3 class="text-xl font-bold">Sarah Johnson</h3>
+                            <p class="text-primary">Lead Educator</p>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">M.Ed in Educational Technology</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Former elementary school teacher with 10+ years
+                            of experience in child development and education.</p>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-6">
+                        <div class="flex flex-col items-center mb-6">
+                            <img src="https://picsum.photos/seed/designer1/150/150.jpg" alt="Alex Chen"
+                                class="w-32 h-32 rounded-full object-cover mb-4">
+                            <h3 class="text-xl font-bold">Alex Chen</h3>
+                            <p class="text-primary">UX/UI Designer</p>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">BFA in Interactive Design</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Specializes in creating intuitive,
+                            child-friendly interfaces that make learning engaging and fun.</p>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#" class="text-primary hover:text-red-600 transition">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Our Values</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-blue-100 dark:bg-blue-900 rounded-full mb-4">
+                        <i class="fas fa-lightbulb text-3xl text-blue-500 dark:text-blue-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Creativity</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We encourage creative thinking and self-expression
+                        through coding.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-green-100 dark:bg-green-900 rounded-full mb-4">
+                        <i class="fas fa-hands-helping text-3xl text-green-500 dark:text-green-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Inclusivity</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Coding is for everyone, regardless of background or
+                        gender.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-purple-100 dark:bg-purple-900 rounded-full mb-4">
+                        <i class="fas fa-puzzle-piece text-3xl text-purple-500 dark:text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Playful Learning</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We make learning to code fun and engaging through games
+                        and projects.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                    <div class="inline-block p-4 bg-yellow-100 dark:bg-yellow-900 rounded-full mb-4">
+                        <i class="fas fa-shield-alt text-3xl text-yellow-500 dark:text-yellow-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Safety First</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We prioritize online safety and responsible technology
+                        use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary">Our Impact</h2>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap text-blue-500 dark:text-blue-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Building Future Skills</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Our students develop problem-solving,
+                                    logical thinking, and digital literacy skills that prepare them for future careers.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-green-100 dark:bg-green-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-green-500 dark:text-green-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Global Community</h3>
+                                <p class="text-gray-600 dark:text-gray-300">We've built a thriving community of young
+                                    coders from around the world who share their projects and inspire each other.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-full mr-4">
+                                <i class="fas fa-hand-holding-heart text-purple-500 dark:text-purple-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Scholarship Program</h3>
+                                <p class="text-gray-600 dark:text-gray-300">We provide scholarships to ensure that every
+                                    child, regardless of their family's financial situation, has access to quality
+                                    coding education.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 md:pl-12">
+                    <img src="https://picsum.photos/seed/impact/600/400.jpg" alt="Kids coding impact"
+                        class="rounded-xl shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join Our Mission</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Whether you're a parent, educator, or potential partner, we'd love
+                to have you be part of our journey to make coding education accessible to all children.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button
+                    class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300">
+                    Become a Partner
+                </button>
+                <button
+                    class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-primary transition duration-300">
+                    Volunteer
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-800 to-indigo-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl mr-2"></i>
+                        <span class="font-bold text-xl font-comic">CodePlay</span>
+                    </div>
+                    <p class="mb-4">Empowering kids to become creators in the digital world through fun and engaging
+                        coding education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-200 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-gray-200 transition">Home</a></li>
+                        <li><a href="courses.html" class="hover:text-gray-200 transition">Courses</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-200 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Parent Guide</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Coding Street, Tech City, TC 12345</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@codeplay.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center">
+                <p>&copy; 2023 CodePlay. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Light/Dark Mode Toggle
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            document.documentElement.classList.toggle('dark');
+
+            // Save preference to localStorage
+            const isDarkMode = document.documentElement.classList.contains('dark');
+            localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode'))) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Team Member Hover Effect
+        const teamMembers = document.querySelectorAll('.rounded-xl');
+        teamMembers.forEach(member => {
+            member.addEventListener('mouseenter', function () {
+                this.classList.add('shadow-xl');
+            });
+
+            member.addEventListener('mouseleave', function () {
+                this.classList.remove('shadow-xl');
+            });
+        });
+    </script>
+</body>
+
+</html>
